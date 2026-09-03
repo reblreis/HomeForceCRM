@@ -1,17 +1,129 @@
 <template>
-    <lightning-card title="Resumo do Imóvel" icon-name="standard:house">
 
-        <template lwc:if={imovel}>
-            <div class="slds-p-around_medium">
+    <lightning-card
+        title="Resumo do Imóvel"
+        icon-name="standard:house">
 
-                <p><strong>Nome:</strong> {imovel.Name}</p>
-                <p><strong>Valor Venda:</strong> {imovel.ValorVenda__c}</p>
-                <p><strong>Valor Aluguel:</strong> {imovel.Valor}</p>
-                <p><strong>Área:</strong> {imovel.AreaConstruida__c} m²</p>
-                <p><strong>Quartos:</strong> {imovel.QuantidadeQuartos__c}</p>
-                <p><strong>Status:</strong> {imovel.Status__c}</p>
+        <template lwc:if={resumo}>
 
+            <div class="resumo-container">
+
+                <h2 class="nome-imovel">
+                    {resumo.nome}
+                </h2>
+
+                <div class="info-grid">
+
+                    <div class="info-item">
+                        <span class="label">Valor de venda</span>
+                        <lightning-formatted-number
+                            class="valor"
+                            value={resumo.valorVenda}
+                            format-style="currency"
+                            currency-code="BRL">
+                        </lightning-formatted-number>
+                    </div>
+
+                    <div class="info-item">
+                        <span class="label">Valor do aluguel</span>
+                        <lightning-formatted-number
+                            class="valor"
+                            value={resumo.valorAluguel}
+                            format-style="currency"
+                            currency-code="BRL">
+                        </lightning-formatted-number>
+                    </div>
+
+                    <div class="info-item">
+                        <span class="label">Área construída</span>
+                        <span class="valor">
+                            {resumo.areaConstruida} m²
+                        </span>
+                    </div>
+
+                    <div class="info-item">
+                        <span class="label">Quartos</span>
+                        <span class="valor">
+                            {resumo.quartos}
+                        </span>
+                    </div>
+
+                    <div class="info-item">
+                        <span class="label">Banheiros</span>
+                        <span class="valor">
+                            {resumo.banheiros}
+                        </span>
+                    </div>
+
+                    <div class="info-item">
+                        <span class="label">Suítes</span>
+                        <span class="valor">
+                            {resumo.suites}
+                        </span>
+                    </div>
+
+                    <div class="info-item">
+                        <span class="label">Vagas</span>
+                        <span class="valor">
+                            {resumo.vagas}
+                        </span>
+                    </div>
+
+                    <div class="info-item">
+                        <span class="label">Status</span>
+                        <span class="valor status">
+                            {resumo.status}
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="destaque">
+
+                    <div>
+                        <span class="label">Valor por m²</span>
+                        <lightning-formatted-number
+                            class="valor"
+                            value={resumo.valorMetroQuadrado}
+                            format-style="currency"
+                            currency-code="BRL">
+                        </lightning-formatted-number>
+                    </div>
+
+                    <div class="slds-m-top_medium">
+                        <span class="label">Aluguel anual estimado</span>
+                        <lightning-formatted-number
+                            class="valor"
+                            value={resumo.valorAnualAluguel}
+                            format-style="currency"
+                            currency-code="BRL">
+                        </lightning-formatted-number>
+                    </div>
+
+                    <div class="slds-m-top_medium">
+                        <span class="label">Classificação</span>
+
+                        <span class="valor">
+                            <template lwc:if={resumo.altoPadrao}>
+                                Alto padrão
+                            </template>
+
+                            <template lwc:else>
+                                Padrão
+                            </template>
+
+                        </span>
+                    </div>
+                </div>
             </div>
+        </template>
+
+        <template lwc:else>
+
+            <div class="slds-p-around_medium">
+                Carregando imóvel...
+            </div>
+
         </template>
     </lightning-card>
 </template>

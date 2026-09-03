@@ -1,0 +1,44 @@
+.resumo-container {
+    padding: 1rem;
+}
+
+.nome-imovel {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.info-item {
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    background: #f3f3f3;
+}
+
+.label {
+    display: block;
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 0.25rem;
+}
+
+.valor {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.destaque {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background: #eef4ff;
+}
+
+.status {
+    font-weight: 600;
+}

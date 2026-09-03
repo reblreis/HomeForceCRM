@@ -1,18 +1,17 @@
 import { LightningElement, wire } from 'lwc';
-import buscarPrimeiroImovel from '@salesforce/apex/ImovelController.buscarPrimeiroImovel';
+import buscarResumoImovel from '@salesforce/apex/ImovelController.buscarResumoImovel';
 
 export default class ResumoImovel extends LightningElement {
 
-    imovel;
+    resumo;
 
-    @wire(buscarPrimeiroImovel)
-    carregarImovel({ data, error }){
+    @wire(buscarResumoImovel)
+    carregarResumo({ data, error }) {
 
-        if(data){
-            this.imovel = data;
-        } else if(error){
-            console.error(error);
+        if (data) {
+            this.resumo = data;
+        } else if (error) {
+            console.error('Erro ao buscar resumo do imóvel:', error);
         }
     }
-
 }

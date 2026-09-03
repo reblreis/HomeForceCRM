@@ -4,7 +4,7 @@ private class ImovelControllerTest {
     @isTest
     static void criarDados(){
 
-        Imovel__c imovel = new Imovel(
+        Imovel__c imovel = new Imovel__c(
             Name = 'Casa Barra',
             ValorVenda__c = 1800000,
             AreaConstruida__c = 200,

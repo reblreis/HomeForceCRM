@@ -6,6 +6,7 @@ public with sharing class ImovelController {
         return [
             SELECT Id,
                    Name,
+                   Logradouro__c,
                    ValorVenda__c,
                    ValorAluguel__c,
                    AreaConstruida__c,
