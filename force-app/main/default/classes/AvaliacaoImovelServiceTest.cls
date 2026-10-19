@@ -128,4 +128,62 @@ private class AvaliacaoImovelServiceTest {
 
         System.assertEquals(0, resultado);
     }
+    
+    
+    @isTest
+    static void deveRetornarZeroQuandoImovelForNuloNoCalculoMetro() {
+        Decimal resultado =
+            AvaliacaoImovelService.calcularValorMetroQuadrado(null);
+
+        System.assertEquals(Decimal.valueOf('0'), resultado);
+    }
+
+    @isTest
+    static void deveRetornarZeroQuandoAluguelForNulo() {
+        Imovel__c imovel = new Imovel__c();
+
+        Decimal resultado =
+            AvaliacaoImovelService.calcularValorAnualAluguel(imovel);
+
+        System.assertEquals(Decimal.valueOf('0'), resultado);
+    }
+
+    @isTest
+    static void deveRetornarZeroQuandoImovelForNuloNoCalculoAluguel() {
+        Decimal resultado =
+            AvaliacaoImovelService.calcularValorAnualAluguel(null);
+
+        System.assertEquals(Decimal.valueOf('0'), resultado);
+    }
+
+    @isTest
+    static void deveRetornarFalseQuandoValorVendaForNuloNoAltoPadrao() {
+        Imovel__c imovel = new Imovel__c();
+
+        Boolean resultado =
+            AvaliacaoImovelService.isAltoPadrao(imovel);
+
+        System.assertEquals(false, resultado);
+    }
+
+    @isTest
+    static void deveRetornarMensagemQuandoImovelForNulo() {
+        String resultado =
+            AvaliacaoImovelService.gerarResumoImovel(null);
+
+        System.assertEquals('Imóvel não informado.', resultado);
+    }
+
+    @isTest
+    static void deveConsiderarLimiteDeDoisMilhoesComoAltoPadrao() {
+        Imovel__c imovel = new Imovel__c(
+            ValorVenda__c = 2000000
+        );
+
+        Boolean resultado =
+            AvaliacaoImovelService.isAltoPadrao(imovel);
+
+        System.assertEquals(true, resultado);
+    }
+
 }
